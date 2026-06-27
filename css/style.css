@@ -29,6 +29,8 @@ hr {
 
 main {
     margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .board {
@@ -39,7 +41,12 @@ main {
     gap: 6px;
 }
 
-#row1, #row2, #row3, #row4, #row5, #row6 {
+#row1,
+#row2,
+#row3,
+#row4,
+#row5,
+#row6 {
     display: flex;
     width: 300px;
     justify-content: space-between;
@@ -55,4 +62,25 @@ main {
 
 .keyboard {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.kb-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.key {
+    width: 30px;
+    height: 30px;
+}
+
+.action {
+    width: 70px;
+    background-color: green;
+    color: white;
 }
