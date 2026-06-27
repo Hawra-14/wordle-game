@@ -1,3 +1,58 @@
-body {
-    background-color: orange;
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+}
+
+hr {
+    width: 95vw;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.title {
+    margin: 5px 0;
+}
+
+main {
+    margin: 20px;
+}
+
+.board {
+    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    gap: 6px;
+}
+
+#row1, #row2, #row3, #row4, #row5, #row6 {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+}
+
+.sqr {
+    height: 50px;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.keyboard {
+    display: flex;
 }
