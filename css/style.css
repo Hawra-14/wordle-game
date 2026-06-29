@@ -30,6 +30,9 @@ hr {
 main {
     margin: 20px;
     display: flex;
+    /* flex-direction: column;
+    align-items: center;
+    gap: 20px; */
     justify-content: space-evenly;
 }
 
@@ -44,7 +47,7 @@ main {
 .board-row {
     display: flex;
     width: 300px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .sqr {
@@ -65,17 +68,22 @@ main {
 
 .kb-row {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
 }
 
 .key {
     width: 30px;
     height: 30px;
+    border-radius: 8px;
 }
 
 .action {
     width: 70px;
     background-color: green;
     color: white;
+}
+
+.disable {
+    pointer-events: none;
 }

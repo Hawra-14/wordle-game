@@ -1,7 +1,7 @@
 **Wordle Game**
 
 Pseudocode:
-- addEventListener('click', ..) on a keyboard's button
+- addEventListener('click', ..) on a keyboard's button ✅
     . change the textContent of square
 - add a function that checks if all squares are filled
     . enable click on Enter button 
