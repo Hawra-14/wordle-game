@@ -58,6 +58,8 @@ main {
     aspect-ratio: 1/1;
     border: 2px solid black;
     text-align: center;
+    font-size: 28px;
+    place-content: center;
 }
 
 .keyboard {
@@ -78,10 +80,11 @@ main {
     width: 40px;
     height: 40px;
     border-radius: 12px;
+    font-size: 16px;
 }
 
 .action {
-    width: 70px;
+    width: 80px;
     background-color: green;
     color: white;
 }

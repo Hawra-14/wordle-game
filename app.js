@@ -1,5 +1,5 @@
 const kb = document.querySelector('.keyboard')
-const key = document.querySelector('.key')
+const key = document.querySelectorAll('.key')
 const brdRow = document.querySelectorAll('.board-row')
 const sqr = document.querySelectorAll('.sqr')
 const board = document.querySelectorAll('.board')
@@ -37,14 +37,14 @@ kb.addEventListener('click', function (event) {
 
         if (currentGuess.length < 5) {
             // console.log(brdRow[brdRowCounter])
-            console.log(sqr[sqrCounter])
-            
+            console.log(brdRow[brdRowCounter].children[sqrCounter])
+
 
             if (brdRow[brdRowCounter].children[sqrCounter].textContent === '') {
                 currentGuess.push(label)
                 console.log(currentGuess)
                 brdRow[brdRowCounter].children[sqrCounter].textContent = label
-                sqrCounter++ 
+                sqrCounter++
                 // console.log(brdRow[brdRowCounter]);
             }
             else {
@@ -74,5 +74,6 @@ function deleteClicked() {
     console.log('Delete')
     console.log(currentGuess)
     // delete from the array
-    
+    sqrCounter--
+    brdRow[brdRowCounter].children[sqrCounter].textContent = ''
 }
