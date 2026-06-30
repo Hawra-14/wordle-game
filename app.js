@@ -2,6 +2,7 @@ const kb = document.querySelector('.keyboard')
 const brdRow = document.querySelectorAll('.board-row')
 const sqr = document.querySelectorAll('.sqr')
 const board = document.querySelectorAll('.board')
+const message = document.querySelector('.message')
 
 // console.log(brdRow[0].children[0]) 
 // console.log(sqr)
@@ -10,6 +11,7 @@ let currentGuess = []
 const word = ['B', 'U', 'I', 'L', 'D']
 let brdRowCounter = 0
 let sqrCounter = 0
+let allCorrect = true
 
 kb.addEventListener('click', function (event) {
     // console.log(event.target)
@@ -45,41 +47,39 @@ kb.addEventListener('click', function (event) {
 function enterClicked() {
     if (currentGuess.length === 5) {
         console.log('Enter')
-        // check the matches
-        for (i = 0; i < 5; i++) {
-            for (j = 0; j < word.length; j++) {
-                if (currentGuess[i].textContent === word[j].textContent) {
-                    brdRow[brdRowCounter].sqr[i].style.backgroundcolor = green
-                    console.log('hello')
-                }
+        for (let i = 0; i < 5; i++) {
+            allCorrect = true
+            const square = brdRow[brdRowCounter].children[i]
+            if (currentGuess[i] === word[i]) {
+                square.style.backgroundColor = 'green'
+            }
+            else if (word.includes(currentGuess[i])) {
+                square.style.backgroundColor = 'yellow'
+                allCorrect = false
+            }
+            else {
+                square.style.backgroundColor = 'grey'
+                allCorrect = false
             }
         }
 
-        // word.forEach(function (correctLetter, id) {
-        //     currentGuess.forEach(function (letter, index) {
-        //         if (letter[index] === correctLetter[id]) {
-        //             console.log('hi')
-        //             sqr[index].style.backgroundColor = 'yellow'
-        //         }
-        //     })
-        // })
+        if (allCorrect) {
+            kb.style.pointerEvents = 'none'
+            message.textContent = 'You Win 🎉'
+        }
+        else if (allCorrect === false && brdRow[5].children[4].textContent !== ''){
+            kb.style.pointerEvents = 'none'
 
-        // let i = 0
-        // let j = 0
+        }
 
-        // if (brdRow[brdRowCounter].sqr[i] === word[j]) {
-        //     console.log('hi')
-        //     sqr[index].style.backgroundColor = 'green'
-        //     i++
-        //     j++
+        // if (word[0] === currentGuess[0]) {
+        //     console.log('matched!')
+        //     sqr[0].style.backgroundColor = 'green'
         // }
-
 
         brdRowCounter++
         sqrCounter = 0
         currentGuess = []
-        console.log(brdRowCounter);
-
     }
 
     else {

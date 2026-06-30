@@ -5,11 +5,11 @@ Pseudocode:
     . change the textContent of square ✅
 - add a function that checks if all squares are filled ✅
     . enable click on Enter button ✅
-    . check the matches with a loop, if userGuess === currentWord -> win
-    . change the squares' colors and keyboard's letters
-        ✔️ letters, ✔️ positions -> green
-        ✔️ letters, ✖️ positions -> yellow
-        ✖️ letters, ✖️ positions -> grey
+    . check the matches with a loop, if userGuess === currentWord -> win ✅
+    . change the squares' colors and keyboard's letters ✅
+        ✔️ letters, ✔️ positions -> green ✅
+        ✔️ letters, ✖️ positions -> yellow ✅
+        ✖️ letters, ✖️ positions -> grey ✅
 - if userGuess !== WordsArr
     . show message 'word not found'
 
@@ -17,6 +17,6 @@ User Stories:
 - aau I want to see instructions so that I can know how to play
 - aau I want to be able to see the keyboard on the screen and choose from it ✅
 - aau I want to be able to restart the game so that I can play again
-- aau I want to be able to see my correct letters so that I can keep guessing
-- aau I want to see a clear indication that the game is over
+- aau I want to be able to see my correct letters so that I can keep guessing ✅
+- aau I want to see a clear indication that the game is over 
 - aau I want to see when I win or loss
