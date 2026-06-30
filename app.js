@@ -1,5 +1,5 @@
 const kb = document.querySelector('.keyboard')
-const key = document.querySelectorAll('.key')
+const key = document.querySelectorAll('.key') // gives me a NodeList not an array
 const brdRow = document.querySelectorAll('.board-row')
 const sqr = document.querySelectorAll('.sqr')
 const board = document.querySelectorAll('.board')
@@ -13,15 +13,12 @@ const word = ['R', 'E', 'A', 'D', 'Y']
 let brdRowCounter = 0
 let sqrCounter = 0
 let allCorrect
-let keyClicked = []
 
 
 kb.addEventListener('click', function (event) {
     // console.log(event.target)
-    const clickedKey = event.target // This give the whole button tag
+    const clickedKey = event.target // This give the whole button element
     const label = clickedKey.textContent // To store the content
-    keyClicked.push(clickedKey)
-    console.log(keyClicked)
 
     if (!event.target.classList.contains('key')) { // Allow clicking on key class only 
         return
@@ -51,28 +48,38 @@ kb.addEventListener('click', function (event) {
 
 function enterClicked() {
     if (currentGuess.length === 5) {
-        console.log('Enter')
-        console.log(keyClicked)
+        allCorrect = true
+
         for (let i = 0; i < 5; i++) {
-            allCorrect = true
             const square = brdRow[brdRowCounter].children[i]
-            if (JSON.stringify(currentGuess) === JSON.stringify(word)) {
+            const keyEl = [...key].find(function (k) { // key is the querySelectorAll('.key') result
+                // [...key] convert the NodeList into a real array so I could use .find()
+                // .find() handles the looping and stops when it hits the first match then return it
+                // console.log(k.textContent)
+                return k.textContent === currentGuess[i];
+            })
+            if (currentGuess[i] === word[i]) {
                 square.style.backgroundColor = 'green'
-            }
-            else if (currentGuess[i] === word[i]) {
-                square.style.backgroundColor = 'green'
-                // keyClicked.style.backgroundColor = 'green'
-                allCorrect = false
+                if (keyEl) {
+                    keyEl.style.backgroundColor = 'green'
+                }
             }
             else if (word.includes(currentGuess[i])) {
                 square.style.backgroundColor = '#b59f3b'
+                if (keyEl && keyEl.style.backgroundColor !== 'green') {
+                    keyEl.style.backgroundColor = '#b59f3b'
+                }
                 allCorrect = false
             }
             else {
                 square.style.backgroundColor = 'grey'
+                if (keyEl) {
+                    keyEl.style.backgroundColor = 'grey'
+                }
                 allCorrect = false
             }
             square.style.color = 'white'
+            keyEl.style.color = 'white'
         }
         if (allCorrect) {
             kb.style.pointerEvents = 'none'
@@ -82,11 +89,6 @@ function enterClicked() {
             kb.style.pointerEvents = 'none'
             message.textContent = `NOO, YOU LOSS 👎🏼 \n IT WAS ${word.join('')}`
         }
-
-        // if (word[0] === currentGuess[0]) {
-        //     console.log('matched!')
-        //     sqr[0].style.backgroundColor = 'green'
-        // }
 
         brdRowCounter++
         sqrCounter = 0
