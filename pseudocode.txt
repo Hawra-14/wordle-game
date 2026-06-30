@@ -10,8 +10,8 @@ Pseudocode:
         ✔️ letters, ✔️ positions -> green ✅
         ✔️ letters, ✖️ positions -> yellow ✅
         ✖️ letters, ✖️ positions -> grey ✅
-- if userGuess !== WordsArr ❓
-    . show message 'word not found' ❓
+- if userGuess !== WordsArr ✅
+    . show message 'word not found' ✅
 
 User Stories:
 - aau I want to see instructions so that I can know how to play ❓

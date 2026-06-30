@@ -1,0 +1,22 @@
+const validWords = [
+    'READY', 'BUILD', 'CRANE', 'TRACE', 'STARE',
+    'SLATE', 'SOUND', 'PLANT', 'GHOST', 'BRAVE',
+    'CLOUD', 'FLAME', 'GRAPE', 'HOUSE', 'LIGHT',
+    'WORLD', 'MUSIC', 'HEART', 'BEACH', 'CHAIR',
+    'TABLE', 'WATER', 'PAPER', 'GREEN', 'BLACK',
+    'WHITE', 'BROWN', 'QUICK', 'SHARP', 'SMART',
+    'HAPPY', 'ANGRY', 'TIRED', 'YOUNG', 'FRESH',
+    'STORM', 'OCEAN', 'RIVER', 'STONE', 'GLASS',
+    'BREAD', 'SUGAR', 'SALAD', 'PIZZA', 'JUICE',
+    'PHONE', 'RADIO', 'VIDEO', 'PHOTO', 'MOUSE',
+    'BOARD', 'MOUNT', 'FIELD', 'PLANE', 'TRAIN',
+    'TRUCK', 'WHEEL', 'BRAKE', 'SPACE', 'EARTH',
+    'COMET', 'LUNAR', 'SOLAR', 'NORTH', 'SOUTH',
+    'KNIFE', 'SPOON', 'PLATE', 'CANDY', 'HONEY',
+    'LEMON', 'MANGO', 'PEACH', 'APPLE', 'BERRY',
+    'MELON', 'OLIVE', 'SAUCE', 'SPICE', 'STEAK',
+    'CURRY', 'WHEAT', 'GRAIN', 'FLOUR', 'YEAST',
+    'DOUGH', 'TOAST', 'CREAM', 'GOALS', 'GOLDS',
+    'AUDIO', 'STEAD', 'COOKS', 'CARES', 'PLAYS',
+    'FRUIT'
+]

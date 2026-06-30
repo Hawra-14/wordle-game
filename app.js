@@ -9,7 +9,9 @@ const message = document.querySelector('.message')
 // console.log(sqr)
 
 let currentGuess = []
-const word = ['R', 'E', 'A', 'D', 'Y']
+// const word = ['R', 'E', 'A', 'D', 'Y']
+const word = validWords[Math.floor(Math.random() * validWords.length)].split(',')
+console.log(word)
 let brdRowCounter = 0
 let sqrCounter = 0
 let allCorrect
@@ -49,6 +51,13 @@ kb.addEventListener('click', function (event) {
 function enterClicked() {
     if (currentGuess.length === 5) {
         allCorrect = true
+
+        if (!validWords.includes(currentGuess.join(''))) {
+            message.textContent = 'Word not found'
+            kb.style.pointerEvents = 'auto' // make sure keyboard stays usable
+            return // stop here, don't color squares or move to next row
+        }
+        message.textContent = ''
 
         for (let i = 0; i < 5; i++) {
             const square = brdRow[brdRowCounter].children[i]
@@ -97,6 +106,7 @@ function enterClicked() {
 
     else {
         console.log('Not enough letters')
+        message.textContent = 'Not enough letters'
     }
 }
 
