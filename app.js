@@ -1,5 +1,4 @@
 const kb = document.querySelector('.keyboard')
-const key = document.querySelectorAll('.key')
 const brdRow = document.querySelectorAll('.board-row')
 const sqr = document.querySelectorAll('.sqr')
 const board = document.querySelectorAll('.board')
@@ -30,25 +29,14 @@ kb.addEventListener('click', function (event) {
     }
 
     else {
-        // if (currentGuess.length === 5) {
-        //     // key.classList.add('.disable')
-        //     // return
-        // }
-
         if (currentGuess.length < 5) {
-            // console.log(brdRow[brdRowCounter])
             console.log(brdRow[brdRowCounter].children[sqrCounter])
-
 
             if (brdRow[brdRowCounter].children[sqrCounter].textContent === '') {
                 currentGuess.push(label)
                 console.log(currentGuess)
                 brdRow[brdRowCounter].children[sqrCounter].textContent = label
                 sqrCounter++
-                // console.log(brdRow[brdRowCounter]);
-            }
-            else {
-                console.log('no');
             }
         }
     }
@@ -58,10 +46,40 @@ function enterClicked() {
     if (currentGuess.length === 5) {
         console.log('Enter')
         // check the matches
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < word.length; j++) {
+                if (currentGuess[i].textContent === word[j].textContent) {
+                    brdRow[brdRowCounter].sqr[i].style.backgroundcolor = green
+                    console.log('hello')
+                }
+            }
+        }
+
+        // word.forEach(function (correctLetter, id) {
+        //     currentGuess.forEach(function (letter, index) {
+        //         if (letter[index] === correctLetter[id]) {
+        //             console.log('hi')
+        //             sqr[index].style.backgroundColor = 'yellow'
+        //         }
+        //     })
+        // })
+
+        // let i = 0
+        // let j = 0
+
+        // if (brdRow[brdRowCounter].sqr[i] === word[j]) {
+        //     console.log('hi')
+        //     sqr[index].style.backgroundColor = 'green'
+        //     i++
+        //     j++
+        // }
+
+
         brdRowCounter++
         sqrCounter = 0
         currentGuess = []
         console.log(brdRowCounter);
+
     }
 
     else {
