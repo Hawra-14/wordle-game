@@ -121,6 +121,7 @@ main {
     background-color: green;
     color: white;
     border: none;
+    letter-spacing: 1px;
 }
 
 .message {
@@ -153,7 +154,7 @@ main {
 
 .close-btn {
     background-color: white;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     position: absolute;
     right: 5%;
