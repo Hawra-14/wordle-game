@@ -8,10 +8,10 @@ _A super cute wordle game_
 ## Getting Started
 
 ### Play the Game 
-(Deployed Game)[link goes here]
+(Deployed Game)[https://hawra-14.github.io/wordle-game/]
 
 ### How to Play
-1. 
+1. Use the on-screen keyboard to write your first guess
 2. 
 3. 
 4. 

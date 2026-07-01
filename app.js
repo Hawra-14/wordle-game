@@ -105,22 +105,22 @@ function enterClicked() {
                 return k.textContent === currentGuess[i];
             })
             if (currentGuess[i] === word[i]) {
-                square.style.backgroundColor = 'green'
+                square.style.backgroundColor = '#007834e0'
                 if (keyEl) {
-                    keyEl.style.backgroundColor = 'green'
+                    keyEl.style.backgroundColor = '#007834e0'
                 }
             }
             else if (word.includes(currentGuess[i])) {
-                square.style.backgroundColor = '#b59f3b'
+                square.style.backgroundColor = '#b59f3be0'
                 if (keyEl && keyEl.style.backgroundColor !== 'green') {
-                    keyEl.style.backgroundColor = '#b59f3b'
+                    keyEl.style.backgroundColor = '#b59f3be0'
                 }
                 allCorrect = false
             }
             else {
-                square.style.backgroundColor = 'grey'
+                square.style.backgroundColor = '#808080e0'
                 if (keyEl) {
-                    keyEl.style.backgroundColor = 'grey'
+                    keyEl.style.backgroundColor = '#808080e0'
                 }
                 allCorrect = false
             }
