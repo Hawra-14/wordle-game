@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Cause:wght@100..900&family=Felipa&family=Londrina+Shadow&family=Londrina+Solid:wght@100;300;400;900&family=Miniver&family=Mouse+Memoirs&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 body {
     position: relative;
     background-color: black;
@@ -50,13 +51,10 @@ hr {
 }
 
 main {
-    /* margin: 20px; */
-    padding: 12px 0;
     display: flex;
-    /* flex-direction: column;
-    align-items: center;
-    gap: 20px; */
     justify-content: space-evenly;
+    align-items: center; 
+    min-height: calc(100vh - 80px);
 }
 
 .board {
@@ -83,6 +81,8 @@ main {
     font-size: 28px;
     place-content: center;
     background-color: #ffffffa6;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }
 
 .keyboard {
@@ -100,11 +100,13 @@ main {
 }
 
 .key {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 12px;
     font-size: 16px;
     background-color: #ffffffad;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }
 
 .action {
@@ -133,6 +135,7 @@ main {
     padding: 8px 28px;
     border: 1.5px solid #555454;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .info-title {
@@ -156,14 +159,50 @@ main {
     list-style: none;
 }
 
-.info-sub-title {
-    justify-items: left;
-}
-
-.info-list {
-    justify-content: left;
-}
-
 .hidden {
     visibility: hidden;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0)
+    }
+
+    25% {
+        transform: translateX(-5px)
+    }
+
+    50% {
+        transform: translateX(5px)
+    }
+
+    75% {
+        transform: translateX(-5px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+.shake {
+    animation: shake 0.3s ease;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0)
+    }
+
+    50% {
+        transform: rotateX(-90deg)
+    }
+
+    100% {
+        transform: rotateX(0)
+    }
+}
+
+.flip {
+    animation: flip 0.7s ease forwards;
 }

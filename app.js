@@ -13,7 +13,7 @@ const body = document.querySelector('body')
 
 
 let currentGuess = []
-// const word = ['R', 'E', 'A', 'D', 'Y']
+// const word = ['G', 'R', 'E', 'E', 'N']
 const word = validWords[Math.floor(Math.random() * validWords.length)].split('')
 console.log(word)
 let brdRowCounter = 0
@@ -27,17 +27,11 @@ kb.addEventListener('click', function (event) {
 
     if (!event.target.classList.contains('key')) { // Allow clicking on key classes only 
         return
-    }
-
-    else if (label === 'ENTER') {
+    } else if (label === 'ENTER') {
         enterClicked()
-    }
-
-    else if (label === 'DELETE') {
+    } else if (label === 'DELETE') {
         deleteClicked()
-    }
-
-    else {
+    } else {
         if (currentGuess.length < 5) {
             console.log(brdRow[brdRowCounter].children[sqrCounter])
 
@@ -66,6 +60,7 @@ restart.addEventListener('click', function () {
         sqr[j].textContent = ''
         sqr[j].style.backgroundColor = ''
         sqr[j].style.color = 'black'
+        sqr[j].classList.remove('flip')
     }
 
     currentGuess = []
@@ -91,7 +86,14 @@ function enterClicked() {
         if (!validWords.includes(currentGuess.join(''))) {
             // message.classList.remove('hidden')
             message.textContent = 'Word not found'
-            kb.style.pointerEvents = 'auto' // make sure keyboard stays usable
+            kb.style.pointerEvents = 'auto' // makes sure keyboard stays usable
+
+            const currentRow = brdRow[brdRowCounter]
+            currentRow.classList.add('shake')
+            currentRow.addEventListener('animationend', function () {
+                currentRow.classList.remove('shake')
+            })
+
             return // stop here, don't color squares or move to next row
         }
         message.textContent = ''
@@ -104,46 +106,49 @@ function enterClicked() {
                 // console.log(k.textContent)
                 return k.textContent === currentGuess[i];
             })
-            if (currentGuess[i] === word[i]) {
-                square.style.backgroundColor = '#007834e0'
-                if (keyEl) {
-                    keyEl.style.backgroundColor = '#007834e0'
-                }
-            }
-            else if (word.includes(currentGuess[i])) {
-                square.style.backgroundColor = '#b59f3be0'
-                if (keyEl && keyEl.style.backgroundColor !== 'green') {
-                    keyEl.style.backgroundColor = '#b59f3be0'
-                }
-                allCorrect = false
-            }
-            else {
-                square.style.backgroundColor = '#808080e0'
-                if (keyEl) {
-                    keyEl.style.backgroundColor = '#808080e0'
-                }
-                allCorrect = false
-            }
-            square.style.color = 'white'
-            keyEl.style.color = 'white'
 
+            // determine color before the timeout
+            let color
+            if (currentGuess[i] === word[i]) {
+                color = '#007834e0'
+            } else if (word.includes(currentGuess[i])) {
+                color = '#b59f3be0'
+                allCorrect = false
+            } else {
+                color = '#808080e0'
+                allCorrect = false
+            }
+
+            setTimeout(function () {
+                square.classList.add('flip')
+                // halfway through the flip (at 350ms = half of 700ms) --> apply the color
+                setTimeout(function () {
+                    square.style.backgroundColor = color
+                    square.style.color = 'white'
+                    if (keyEl) {
+                        keyEl.style.backgroundColor = color
+                        keyEl.style.color = 'white'
+                    }
+                }, 250)
+            }, i * 400)
         }
-        if (allCorrect) {
-            kb.style.pointerEvents = 'none'
-            message.textContent = 'CORRECT 🎉'
-        }
-        else if (allCorrect === false && brdRow[5].children[4].textContent !== '') {
-            kb.style.pointerEvents = 'none'
-            message.textContent = `NOO, YOU LOSS 👎🏼 \n IT WAS ${word.join('')}`
-        }
+
+        // wait for all flips before showing win/loss
+        setTimeout(function () {
+            if (allCorrect) {
+                kb.style.pointerEvents = 'none'
+                message.textContent = 'CORRECT 🎉'
+            } else if (allCorrect === false && brdRow[5].children[4].textContent !== '') {
+                kb.style.pointerEvents = 'none'
+                message.textContent = `NOO, YOU LOSS 👎🏼 \n IT WAS ${word.join('')}`
+            }
+        }, 5 * 400)
 
         brdRowCounter++
         sqrCounter = 0
         currentGuess = []
 
-    }
-
-    else {
+    } else {
         message.textContent = 'Not enough letters'
     }
 }
