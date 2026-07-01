@@ -1,16 +1,21 @@
 const kb = document.querySelector('.keyboard')
 const key = document.querySelectorAll('.key') // gives me a NodeList not an array
+const actionKey = document.querySelectorAll('.action')
 const brdRow = document.querySelectorAll('.board-row')
 const sqr = document.querySelectorAll('.sqr')
 const board = document.querySelectorAll('.board')
 const message = document.querySelector('.message')
+const restart = document.querySelector('#restart')
+const help = document.querySelector('#help')
+const info = document.querySelector('.info')
+const closeBtn = document.querySelector('.close-btn')
 
 // console.log(brdRow[0].children[0]) 
 // console.log(sqr)
 
 let currentGuess = []
 // const word = ['R', 'E', 'A', 'D', 'Y']
-const word = validWords[Math.floor(Math.random() * validWords.length)].split(',')
+const word = validWords[Math.floor(Math.random() * validWords.length)].split('')
 console.log(word)
 let brdRowCounter = 0
 let sqrCounter = 0
@@ -22,7 +27,7 @@ kb.addEventListener('click', function (event) {
     const clickedKey = event.target // This give the whole button element
     const label = clickedKey.textContent // To store the content
 
-    if (!event.target.classList.contains('key')) { // Allow clicking on key class only 
+    if (!event.target.classList.contains('key')) { // Allow clicking on key classes only 
         return
     }
 
@@ -40,7 +45,7 @@ kb.addEventListener('click', function (event) {
 
             if (brdRow[brdRowCounter].children[sqrCounter].textContent === '') {
                 currentGuess.push(label)
-                console.log(currentGuess)
+                console.log(currentGuess, "current")
                 brdRow[brdRowCounter].children[sqrCounter].textContent = label
                 sqrCounter++
             }
@@ -48,11 +53,47 @@ kb.addEventListener('click', function (event) {
     }
 })
 
+help.addEventListener('click', function (event) {
+    info.classList.remove('hidden')
+})
+
+restart.addEventListener('click', function () {
+    for (let j = 0; j < sqr.length; j++) {
+        console.log(sqr, "sqr array");
+        console.log(sqr[j], "sqr array 1");
+
+        sqr[j].textContent = ''
+        sqr[j].style.backgroundColor = ''
+        sqr[j].style.color = 'black'
+    }
+
+
+    currentGuess = []
+    brdRowCounter = 0
+    sqrCounter = 0
+    message.textContent = ''
+    kb.style.pointerEvents = 'all'
+    for (let i = 0; i < key.length; i++) {
+
+        key[i].style.backgroundColor = ''
+        key[i].style.color = 'black'
+        actionKey[0].style.color = 'white'
+        actionKey[1].style.color = 'white'
+    }
+
+    // sqr.textContent=""
+    // console.log(sqr , "sqr array");
+
+    // console.log(sqr.textContent="", "check")
+    // brdRow[0].children[0]
+})
+
 function enterClicked() {
     if (currentGuess.length === 5) {
         allCorrect = true
 
         if (!validWords.includes(currentGuess.join(''))) {
+            // message.classList.remove('hidden')
             message.textContent = 'Word not found'
             kb.style.pointerEvents = 'auto' // make sure keyboard stays usable
             return // stop here, don't color squares or move to next row
@@ -89,6 +130,7 @@ function enterClicked() {
             }
             square.style.color = 'white'
             keyEl.style.color = 'white'
+
         }
         if (allCorrect) {
             kb.style.pointerEvents = 'none'
@@ -102,10 +144,10 @@ function enterClicked() {
         brdRowCounter++
         sqrCounter = 0
         currentGuess = []
+
     }
 
     else {
-        console.log('Not enough letters')
         message.textContent = 'Not enough letters'
     }
 }

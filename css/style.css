@@ -95,3 +95,53 @@ main {
     text-align: center;
     width: 100%;
 }
+
+#restart,
+#help {
+    cursor: pointer;
+}
+
+.info {
+    position: absolute;
+    margin: auto;
+    top: 20%;
+    font-size: 18px;
+    background-color: white;
+    padding: 8px 28px;
+    border: 1.5px solid #555454;
+    border-radius: 10px;
+}
+
+.info-title {
+    justify-self: center;
+}
+
+.close-btn {
+    background-color: white;
+    color: red;
+    font-size: 18px;
+    display: flex;
+    position: absolute;
+    right: 5%;
+    top: 8%;
+    border: none;
+    text-decoration: none;
+    border-radius: 30%;
+    padding: 3px 7px;
+}
+
+.info li {
+    list-style: none;
+}
+
+.info-sub-title {
+    justify-items: left;
+}
+
+.info-list {
+    justify-content: left;
+}
+
+.hidden {
+    visibility: hidden;
+}
