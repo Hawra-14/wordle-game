@@ -9,9 +9,8 @@ const restart = document.querySelector('#restart')
 const help = document.querySelector('#help')
 const info = document.querySelector('.info')
 const closeBtn = document.querySelector('.close-btn')
+const body = document.querySelector('body')
 
-// console.log(brdRow[0].children[0]) 
-// console.log(sqr)
 
 let currentGuess = []
 // const word = ['R', 'E', 'A', 'D', 'Y']
@@ -23,7 +22,6 @@ let allCorrect
 
 
 kb.addEventListener('click', function (event) {
-    // console.log(event.target)
     const clickedKey = event.target // This give the whole button element
     const label = clickedKey.textContent // To store the content
 
@@ -55,24 +53,28 @@ kb.addEventListener('click', function (event) {
 
 help.addEventListener('click', function (event) {
     info.classList.remove('hidden')
+    // body.style.backgroundColor = 'black'
+    // key.style.backgroundColor = 'black'
+})
+
+closeBtn.addEventListener('click', function (event) {
+    info.classList.add('hidden')
 })
 
 restart.addEventListener('click', function () {
     for (let j = 0; j < sqr.length; j++) {
-        console.log(sqr, "sqr array");
-        console.log(sqr[j], "sqr array 1");
-
         sqr[j].textContent = ''
         sqr[j].style.backgroundColor = ''
         sqr[j].style.color = 'black'
     }
-
 
     currentGuess = []
     brdRowCounter = 0
     sqrCounter = 0
     message.textContent = ''
     kb.style.pointerEvents = 'all'
+
+
     for (let i = 0; i < key.length; i++) {
 
         key[i].style.backgroundColor = ''
@@ -80,12 +82,6 @@ restart.addEventListener('click', function () {
         actionKey[0].style.color = 'white'
         actionKey[1].style.color = 'white'
     }
-
-    // sqr.textContent=""
-    // console.log(sqr , "sqr array");
-
-    // console.log(sqr.textContent="", "check")
-    // brdRow[0].children[0]
 })
 
 function enterClicked() {
