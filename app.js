@@ -31,11 +31,9 @@ kb.addEventListener('click', function (event) {
         deleteClicked()
     } else {
         if (currentGuess.length < 5) {
-            console.log(brdRow[brdRowCounter].children[sqrCounter])
 
             if (brdRow[brdRowCounter].children[sqrCounter].textContent === '') {
                 currentGuess.push(label)
-                console.log(currentGuess, "current")
                 brdRow[brdRowCounter].children[sqrCounter].textContent = label
                 sqrCounter++
             }
@@ -157,9 +155,13 @@ function enterClicked() {
 }
 
 function deleteClicked() {
+    if (currentGuess.length === 0) {
+        return
+    }
+
     currentGuess = currentGuess.slice(0, -1) // Delete the last letter on the currentGuess
-    console.log('Delete')
-    console.log(currentGuess)
+    // console.log('Delete')
+    // console.log(currentGuess)
     // delete from the array
     sqrCounter--
     brdRow[brdRowCounter].children[sqrCounter].textContent = ''
