@@ -9,8 +9,6 @@ const restart = document.querySelector('#restart')
 const help = document.querySelector('#help')
 const info = document.querySelector('.info')
 const closeBtn = document.querySelector('.close-btn')
-const body = document.querySelector('body')
-
 
 let currentGuess = []
 // const word = ['G', 'R', 'E', 'E', 'N']
@@ -47,8 +45,6 @@ kb.addEventListener('click', function (event) {
 
 help.addEventListener('click', function (event) {
     info.classList.remove('hidden')
-    // body.style.backgroundColor = 'black'
-    // key.style.backgroundColor = 'black'
 })
 
 closeBtn.addEventListener('click', function (event) {
@@ -59,7 +55,7 @@ restart.addEventListener('click', function () {
     for (let j = 0; j < sqr.length; j++) {
         sqr[j].textContent = ''
         sqr[j].style.backgroundColor = ''
-        sqr[j].style.color = 'black'
+        sqr[j].style.color = '#1c3f4c'
         sqr[j].classList.remove('flip')
     }
 
@@ -73,7 +69,7 @@ restart.addEventListener('click', function () {
     for (let i = 0; i < key.length; i++) {
 
         key[i].style.backgroundColor = ''
-        key[i].style.color = 'black'
+        key[i].style.color = '#1c3f4c'
         actionKey[0].style.color = 'white'
         actionKey[1].style.color = 'white'
     }
@@ -110,12 +106,12 @@ function enterClicked() {
             // determine color before the timeout
             let color
             if (currentGuess[i] === word[i]) {
-                color = '#007834e0'
+                color = 'rgba(0, 120, 52, 0.88)'
             } else if (word.includes(currentGuess[i])) {
-                color = '#b59f3be0'
+                color = 'rgba(181, 159, 59, 0.88)'
                 allCorrect = false
             } else {
-                color = '#808080e0'
+                color = 'rgba(128, 128, 128, 0.88)'
                 allCorrect = false
             }
 
@@ -126,8 +122,15 @@ function enterClicked() {
                     square.style.backgroundColor = color
                     square.style.color = 'white'
                     if (keyEl) {
-                        keyEl.style.backgroundColor = color
                         keyEl.style.color = 'white'
+                        keyEl.style.border = color
+                        if (color === 'rgba(0, 120, 52, 0.88)') {
+                            keyEl.style.backgroundColor = 'rgba(0, 120, 52, 0.88)'
+                        } else if (color === 'rgba(181, 159, 59, 0.88)' && keyEl.style.backgroundColor !== 'rgba(0, 120, 52, 0.88)') {
+                            keyEl.style.backgroundColor = 'rgba(181, 159, 59, 0.88)'
+                        } else if (keyEl.style.backgroundColor !== 'rgba(0, 120, 52, 0.88)' && keyEl.style.backgroundColor !== 'rgba(181, 159, 59, 0.88)') {
+                            keyEl.style.backgroundColor = 'rgba(128, 128, 128, 0.88)'
+                        }
                     }
                 }, 250)
             }, i * 400)

@@ -18,5 +18,5 @@ const validWords = [
     'CURRY', 'WHEAT', 'GRAIN', 'FLOUR', 'YEAST',
     'DOUGH', 'TOAST', 'CREAM', 'GOALS', 'GOLDS',
     'AUDIO', 'STEAD', 'COOKS', 'CARES', 'PLAYS',
-    'FRUIT', 'CLEAR', 'CLOSE', 'CODES'
+    'FRUIT', 'CLEAR', 'CLOSE', 'CODES', 'AAAAA'
 ]
